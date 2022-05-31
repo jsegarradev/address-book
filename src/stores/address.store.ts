@@ -14,7 +14,8 @@ export const useAddressStore = defineStore({
         //     await axios.get('')
         //         .then((response) => )
         //
-        // }
+        // },
+        // updateAddresses: (value) =>
     }
 
 })

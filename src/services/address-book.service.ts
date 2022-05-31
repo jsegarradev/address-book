@@ -1,4 +1,6 @@
 import {AbstractApiService} from "@/services/abstract-api.service";
+import type {AxiosResponse} from "axios";
+import type {Address} from "@/model/Address";
 
 class AddressBookService extends AbstractApiService {
 
@@ -6,10 +8,10 @@ class AddressBookService extends AbstractApiService {
         super('');
     }
 
-    getAddresses = () => {
+    getAddresses = (): Promise<AxiosResponse<Address[]>> => {
         const params = {}
         return this.http
-            .get('https://localhost:3001/addresses',{params: params})
+            .get('http://localhost:3001/addresses',{params: params})
             .then(this.handleResponse.bind(this))
             .catch(this.handleError.bind(this))
     }
