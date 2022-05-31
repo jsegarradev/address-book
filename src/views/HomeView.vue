@@ -3,10 +3,6 @@
     <div class="col-4" v-for="address in addresses" :key="address.id">
       <AddressCard :address="address"/>
     </div>
-
-<!--    <div v-for="address in addresses" :key="address.id" class="col-3">-->
-<!--      <div class="p-2 border-1 border-round">{{address}}</div>-->
-<!--    </div>-->
   </div>
 
 </template>

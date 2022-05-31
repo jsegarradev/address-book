@@ -19,3 +19,4 @@ export const useAddressStore = defineStore({
     }
 
 })
+// https://blog.logrocket.com/complex-vue-3-state-management-pinia/#using-a-basic-pinia-store
