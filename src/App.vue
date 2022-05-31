@@ -1,6 +1,6 @@
 <template>
   <div class="p-2">
-    <TopBar v-on:showModal="toggleDialogFlag" class="mb-2" />
+    <TopBar v-on:showModal="toggleDialogFlag" class="mb-4" />
     <LoginDialog v-if="showModal" v-on:hide="toggleDialogFlag" />
     <RouterView />
   </div>

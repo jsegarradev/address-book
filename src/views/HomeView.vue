@@ -1,6 +1,9 @@
 <template>
   <div class="grid">
-    <div class="col-4" v-for="address in addresses" :key="address.id">
+    <div v-for="address in addresses"
+        :key="address.id"
+        class="col-12 md:col-6 lg:col-4 xl:col-3 p-2 lg:p-4"
+    >
       <AddressCard :address="address"/>
     </div>
   </div>
