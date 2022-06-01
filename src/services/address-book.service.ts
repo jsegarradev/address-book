@@ -5,13 +5,12 @@ import type {Address} from "@/model/Address";
 class AddressBookService extends AbstractApiService {
 
     constructor() {
-        super('');
+        super('addresses');
     }
 
     getAddresses = (): Promise<AxiosResponse<Address[]>> => {
-        const params = {}
         return this.http
-            .get('http://localhost:3001/addresses',{params: params})
+            .get(this.baseURL)
             .then(this.handleResponse.bind(this))
             .catch(this.handleError.bind(this))
     }
