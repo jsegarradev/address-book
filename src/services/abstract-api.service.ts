@@ -23,22 +23,6 @@ export abstract class AbstractApiService {
         this.http.defaults.headers.common['Content-Type'] = 'application/json;charset=UTF-8';
     }
 
-
-    protected createParams(record: Record<string, any>): URLSearchParams {
-        const params: URLSearchParams = new URLSearchParams();
-        for (const key in record) {
-            if (Object.prototype.hasOwnProperty.call(record, key)) {
-                const value: any = record[key];
-                if (value !== null && value !== undefined) {
-                    params.append(key, value);
-                } else {
-                    console.debug(`Param key '${key}' was null or undefined and will be ignored`);
-                }
-            }
-        }
-        return params;
-    }
-
     protected handleResponse<T>(response: AxiosResponse<T>): T {
         return response.data;
     }
@@ -64,6 +48,21 @@ export abstract class AbstractApiService {
             }
         }
         throw new Error(error as any);
+    }
+
+    protected createParams(record: Record<string, any>): URLSearchParams {
+        const params: URLSearchParams = new URLSearchParams();
+        for (const key in record) {
+            if (Object.prototype.hasOwnProperty.call(record, key)) {
+                const value: any = record[key];
+                if (value !== null && value !== undefined) {
+                    params.append(key, value);
+                } else {
+                    console.debug(`Param key '${key}' was null or undefined and will be ignored`);
+                }
+            }
+        }
+        return params;
     }
 }
 
