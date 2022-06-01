@@ -85,8 +85,8 @@ app.route("/login")
         } else {
             response = {
                 error: true,
-                codigo: 401,
-                mensaje: "Login failed",
+                code: 401,
+                message: "Login failed",
             };
         }
         res.send(response);
