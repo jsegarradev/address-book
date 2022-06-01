@@ -10,7 +10,7 @@ export abstract class AbstractApiService {
 
     protected constructor(
         protected readonly path?: string,
-        protected readonly baseURL: string = import.meta.env.VITE_BACKEND ?? '/'
+        protected readonly baseURL: string = 'http://localhost:3001/'
     ) {
         if (path) {
             baseURL += path;
