@@ -23,16 +23,27 @@
                    type="text"/>
       </div>
     </form>
-    <!--    <template #footer>-->
-    <!--      <Button label="No" icon="pi pi-times" @click="closeModal" class="p-button-text"/>-->
-    <!--      <Button label="Yes" icon="pi pi-check" @click="closeModal" autofocus/>-->
-    <!--    </template>-->
+    <template #footer>
+      <div class="grid">
+        <div class="col-12">
+          <Button label="Login" class="w-full"/>
+        </div>
+        <div class="col-12">
+          <divider></divider>
+        </div>
+        <div class="col-12">
+          <Button label="Register" class="p-button-outlined w-full"/>
+        </div>
+      </div>
+    </template>
   </Dialog>
 </template>
 
 <script setup lang="ts">
 import Dialog from "primevue/dialog";
 import InputText from "primevue/inputtext";
+import Button from "primevue/button";
+import Divider from "primevue/divider";
 import {defineEmits, onMounted, ref} from "vue";
 import type {Ref} from "vue";
 
