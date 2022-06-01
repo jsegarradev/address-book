@@ -10,7 +10,7 @@ class AddressBookService extends AbstractApiService {
 
     getAddresses = (): Promise<AxiosResponse<Address[]>> => {
         return this.http
-            .get(this.baseURL)
+            .get('')
             .then(this.handleResponse.bind(this))
             .catch(this.handleError.bind(this))
     }
