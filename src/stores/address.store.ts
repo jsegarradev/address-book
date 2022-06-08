@@ -1,21 +1,28 @@
 import {defineStore} from 'pinia'
-import {addressesService} from "@/services/addresses.service";
 import type {Address} from "@/model/Address";
 import type {AxiosResponse} from "axios";
+import {addressService} from "@/services/address.service";
 
 export const useAddressStore = defineStore({
     id: 'address',
-    state: (): {addresses: Address[]} => ({
+    state: (): { addresses: Address[] } => ({
         addresses: []
     }),
     actions: {
         async getAll() {
-            await addressesService.getAddresses()
-                .then((response:AxiosResponse<Address[]>) => {
+            await addressService.getAddresses()
+                .then((response: AxiosResponse<Address[]>) => {
                     console.log(response)
                     this.addresses = response.data
                 });
 
+        },
+        async deleteAddress(id: string) {
+            await addressService.deleteAddress(id)
+                .then(response => {
+                    console.log(response);
+                    this.getAll();
+                })
         }
     }
 

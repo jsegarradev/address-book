@@ -1,18 +1,14 @@
-import {AbstractApiService} from "@/services/abstract-api.service";
-import type {LoginResponse} from "@/model/LoginResponse";
+import axios from "axios";
 
-class LoginService extends AbstractApiService {
+export class LoginService {
+    private readonly baseUrl = 'http://localhost:3001';
 
-    constructor() {
-        super('login');
-    }
+    public login(email: string, password: string) {
+        const data = {email: email, password: password};
 
-    login = (email: string, password: string): Promise<LoginResponse> => {
-        const params = {email:email,password:password};
-        return this.http
-            .post('',params)
-            .then(this.handleResponse.bind(this))
-            .catch(this.handleError.bind(this))
+        return axios.post(`${this.baseUrl}/login`, data)
+            .then((response) => response.data)
+            .catch((error) => console.log(error));
     }
 }
 

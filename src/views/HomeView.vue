@@ -22,5 +22,5 @@ const authStore = useAuthStore();
 const {addresses} = storeToRefs(addressStore);
 addressStore.getAll();
 
-authStore.$subscribe(() => addressStore.getAll())
+authStore.$subscribe(() => addressStore.getAll());
 </script>

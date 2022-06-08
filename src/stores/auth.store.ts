@@ -1,9 +1,9 @@
 // https://jasonwatmore.com/post/2022/05/26/vue-3-pinia-jwt-authentication-tutorial-example
 // https://blog.logrocket.com/axios-vs-fetch-best-http-requests/#:~:text=To%20send%20data%2C%20fetch(),stringify%20method
 import {defineStore} from "pinia";
-import {loginService} from "@/services/login.service";
 import type {LoginResponse} from "@/model/LoginResponse";
 import type {User} from "@/model/User";
+import {loginService} from "@/services/login.service";
 
 export const useAuthStore = defineStore({
     id: 'auth',
