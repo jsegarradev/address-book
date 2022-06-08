@@ -1,7 +1,7 @@
 <template>
   <div class="p-2">
-    <TopBar v-on:showModal="toggleDialogFlag" class="mb-4" />
-    <LoginDialog v-if="showModal" v-on:hide="toggleDialogFlag" />
+    <TopBar class="mb-4" />
+    <LoginDialog v-if="eventStore.loginDialogState"/>
     <RouterView />
   </div>
 </template>
@@ -10,14 +10,9 @@
 import {RouterView} from 'vue-router'
 import TopBar from "@/components/TopBar.vue";
 import LoginDialog from "@/components/LoginDialog.vue";
-import {ref} from "vue";
-import type {Ref} from "vue";
+import {useEventStore} from "@/stores/event.store";
 
-const showModal: Ref<boolean> = ref(false);
-
-const toggleDialogFlag = (): void => {
-  showModal.value = !showModal.value;
-}
+const eventStore = useEventStore();
 
 </script>
 

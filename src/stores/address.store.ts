@@ -1,22 +1,23 @@
 import {defineStore} from 'pinia'
-import axios from "axios";
+import {addressesService} from "@/services/addresses.service";
+import type {Address} from "@/model/Address";
+import type {AxiosResponse} from "axios";
 
 export const useAddressStore = defineStore({
     id: 'address',
-    state: () => ({
+    state: (): {addresses: Address[]} => ({
         addresses: []
     }),
-    getters: {
-        addresses: (state) => state.addresses
-    },
     actions: {
-        // getAddresses: async () => {
-        //     await axios.get('')
-        //         .then((response) => )
-        //
-        // },
-        // updateAddresses: (value) =>
+        async getAll() {
+            await addressesService.getAddresses()
+                .then((response:AxiosResponse<Address[]>) => {
+                    console.log(response)
+                    this.addresses = response.data
+                });
+
+        }
     }
 
-})
+});
 // https://blog.logrocket.com/complex-vue-3-state-management-pinia/#using-a-basic-pinia-store

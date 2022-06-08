@@ -1,23 +1,24 @@
 <!--https://medium.com/developer-rants/angular-style-reactive-form-validation-in-vue-js-and-typescript-d9881ca029e4-->
 
 <template>
-  <Dialog v-model:visible="displayModal"
-          v-on:hide="emit('hide')"
+  <Dialog v-model:visible="eventStore.loginDialogState"
+          v-on:hide="eventStore.closeLoginDialog()"
           :modal="true"
           header="Login"
-          :style="{width: '50vw'}"
   >
     <form id="login-form">
       <div class="field">
         <label for="email">Email</label>
-        <InputText id="email"
+        <InputText v-model="email"
+                   id="email"
                    aria-describedby="email-help"
                    class="p-invalid w-full"
                    type="text"/>
       </div>
       <div class="field">
         <label for="password">Password</label>
-        <InputText id="password"
+        <InputText v-model="password"
+                   id="password"
                    aria-describedby="password-help"
                    class="p-invalid w-full"
                    type="text"/>
@@ -26,7 +27,7 @@
     <template #footer>
       <div class="grid">
         <div class="col-12">
-          <Button label="Login" class="w-full"/>
+          <Button v-on:click="submitForm" label="Login" class="w-full"/>
         </div>
         <div class="col-12">
           <divider></divider>
@@ -44,13 +45,39 @@ import Dialog from "primevue/dialog";
 import InputText from "primevue/inputtext";
 import Button from "primevue/button";
 import Divider from "primevue/divider";
-import {defineEmits, onMounted, ref} from "vue";
 import type {Ref} from "vue";
+import {ref} from "vue";
+import {useAuthStore} from "@/stores/auth.store";
+import {useEventStore} from "@/stores/event.store";
 
-const displayModal: Ref<boolean> = ref(false);
+const authStore = useAuthStore();
+const eventStore = useEventStore();
 
-const emit = defineEmits(['hide']);
+const email: Ref<string> = ref('');
+const password: Ref<string> = ref('');
+const error: Ref<boolean> = ref(false);
 
-onMounted(() => displayModal.value = true);
+const submitForm = (): void => {
+  validateForm();
+  if (!error.value) {
+    loginAttempt();
+    resetForm();
+    eventStore.closeLoginDialog();
+  }
+}
+
+const validateForm = (): void => {
+  error.value = (email.value.length === 0 || password.value.length === 0);
+}
+
+const resetForm = (): void => {
+  email.value = '';
+  password.value = '';
+}
+
+const loginAttempt = async (): Promise<void> => {
+  await authStore.login(email.value,password.value)
+      .then(() => console.log(authStore.user))
+}
 
 </script>
