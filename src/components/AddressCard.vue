@@ -6,7 +6,7 @@
       <div class="col-12 flex justify-content-end h-2rem">
         <i v-if="authStore.user"
            v-on:click="addressStore.deleteAddress(address.id)"
-           class="pi pi-trash text-red-600"></i>
+           class="pi pi-trash text-red-600 text-3xl cursor-pointer"></i>
       </div>
       <div class="col-12 flex align-items-center ">
         <h2 class="text-center">{{ address.name }} {{address.lastName}}</h2>
