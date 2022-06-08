@@ -1,5 +1,7 @@
 <template>
-  <div class="p-2 border-1 border-300 border-round shadow-1 h-15rem flex align-items-center overflow-auto">
+  <div class="p-2 border-1 border-300 border-round shadow-1 h-15rem flex align-items-center overflow-auto"
+       v-bind:class="{'bg-gray-200':address.private}"
+  >
     <h2 class="text-center">{{ address.name }} {{address.lastName}}</h2>
     <divider layout="vertical"></divider>
    <div class="text-lg">
