@@ -1,8 +1,8 @@
 <template>
   <div class="w-full border-1 border-300 border-round shadow-1 p-1">
     <div class="grid m-0 flex justify-content-end">
-      <div class="col-12 sm:col-6 md:col-4 lg:col-2 flex align-items-center justify-content-end text-lg">
-        jsegarra.dev@gmail.com
+      <div v-if="authStore.user" class="col-12 sm:col-6 md:col-4 lg:col-2 flex align-items-center justify-content-end text-lg">
+        {{authStore.user.email}}
       </div>
       <div class="col-12 sm:col-6 md:col-2 lg:col-1 flex justify-content-center">
         <div class="p-fluid w-full">
