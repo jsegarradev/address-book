@@ -1,16 +1,17 @@
 import {defineStore} from "pinia";
+import type {DialogName} from "@/model/DialogName";
 
 export const useEventStore = defineStore({
     id:'event',
     state: () => ({
-        loginDialogState: false
+        login: false,
+        newAddress: false
     }),
     actions:{
-        openLoginDialog() {
-            this.loginDialogState = true
+        openDialog(name: DialogName) {
+            this.$state[name] = true;
         },
-        closeLoginDialog() {
-            this.loginDialogState = false
-        }
+        closeDialog(name: DialogName) {
+            this.$state[name] = false;        }
     }
 });

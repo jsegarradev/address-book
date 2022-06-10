@@ -2,7 +2,7 @@
   <div class="grid">
     <div v-for="address in addresses"
          :key="address.id"
-         class="col-12 md:col-6 lg:col-4 xl:col-3 p-2 lg:p-4"
+         class="col-12 md:col-6 lg:col-4 xl:col-3"
     >
       <AddressCard :address="address"/>
     </div>

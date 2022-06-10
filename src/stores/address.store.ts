@@ -23,7 +23,14 @@ export const useAddressStore = defineStore({
                     console.log(response);
                     this.getAll();
                 })
-        }
+        },
+     async createAddress(address: Address) {
+            await addressService.createAddress(address)
+                .then(response => {
+                    console.log(response);
+                    this.getAll();
+                })
+     }
     }
 
 });

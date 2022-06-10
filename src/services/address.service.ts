@@ -24,6 +24,15 @@ class AddressService {
             .then((response) => response.data)
             .catch((error) => console.log(error));
     }
+
+    public createAddress(address: Address):Promise<AxiosResponse<void>> {
+        const headers: AxiosRequestHeaders = {
+            'Authorization': useAuthStore().user?.tokenId || ''
+        };
+        return axios.post(`${this.baseUrl}/address`,address,{headers:headers})
+            .then((response) => response.data)
+            .catch((error) => console.log(error));
+    }
 }
 
 export const addressService: AddressService = new AddressService();
