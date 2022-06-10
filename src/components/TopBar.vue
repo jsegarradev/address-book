@@ -8,8 +8,10 @@
                 label="New address"/>
       </div>
     </div>
-    <div class="col-12 sm:col-6 md:col-4 xl:col-5 item bg-black-alpha-60"></div>
-    <div class="col-12 sm:col-6 md:col-4 xl:col-4 item justify-content-end text-lg bg-bluegray-200"
+    <div class="col-12 sm:col-6 md:col-4 xl:col-5 item">
+      <SearchBar />
+    </div>
+    <div class="col-12 sm:col-6 md:col-4 xl:col-4 item justify-content-end text-lg"
         v-if="authStore.user"
     >
       {{ authStore.user.email }}
@@ -34,6 +36,7 @@
 
 <script setup lang="ts">
 import Button from "primevue/button";
+import SearchBar from "@/components/SearchBar.vue";
 import {DialogName} from "@/model/DialogName";
 import {useAuthStore} from "@/stores/auth.store";
 import {useEventStore} from "@/stores/event.store";

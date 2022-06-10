@@ -5,7 +5,6 @@
       <InputText v-model="address.name"
                  id="name"
                  aria-describedby="name-help"
-                 class="p-invalid w-full"
                  type="text"/>
     </div>
     <div class="field">
@@ -13,7 +12,6 @@
       <InputText v-model="address.lastName"
                  id="lastName"
                  aria-describedby="lastName-help"
-                 class="p-invalid w-full"
                  type="text"/>
     </div>
     <div class="field">
@@ -21,7 +19,6 @@
       <InputText v-model="address.address"
                  id="lastName"
                  aria-describedby="address-help"
-                 class="p-invalid w-full"
                  type="text"/>
     </div>
     <div class="field">
@@ -29,7 +26,6 @@
       <InputText v-model="address.city"
                  id="city"
                  aria-describedby="city-help"
-                 class="p-invalid w-full"
                  type="text"/>
     </div>
     <div class="field">
@@ -37,7 +33,6 @@
       <InputText v-model="address.state"
                  id="state"
                  aria-describedby="state-help"
-                 class="p-invalid w-full"
                  type="text"/>
     </div>
     <div class="field">
@@ -45,7 +40,6 @@
       <InputText v-model="address.country"
                  id="country"
                  aria-describedby="country-help"
-                 class="p-invalid w-full"
                  type="text"/>
     </div>
     <div class="field">
@@ -53,7 +47,6 @@
       <InputText v-model="address.phone"
                  id="phone"
                  aria-describedby="phone-help"
-                 class="p-invalid w-full"
                  type="text"/>
     </div>
     <div class="field">
@@ -61,7 +54,6 @@
       <InputText v-model="address.email"
                  id="email"
                  aria-describedby="email-help"
-                 class="p-invalid w-full"
                  type="text"/>
     </div>
     <div class="field">
@@ -69,10 +61,7 @@
       <Checkbox v-model="address.private" :binary="true"/>
     </div>
     <div class="field">
-      <Button v-on:click="submitForm" label="Login" class="w-full"/>
-    </div>
-    <div class="field">
-      <Button label="Register" class="p-button-outlined w-full"/>
+      <Button v-on:click="submitForm" label="Save address" class="w-full"/>
     </div>
   </form>
 </template>
@@ -84,13 +73,11 @@ import Checkbox from "primevue/checkbox";
 import type {Address} from "@/model/Address";
 import type {Ref} from "vue";
 import {ref} from "vue";
-import {useAuthStore} from "@/stores/auth.store";
 import {useAddressStore} from "@/stores/address.store";
 import {v4 as uuid} from 'uuid';
 import {DialogName} from "@/model/DialogName";
 import {useEventStore} from "@/stores/event.store";
 
-const authStore = useAuthStore();
 const eventStore = useEventStore();
 const addressStore = useAddressStore();
 

@@ -24,13 +24,18 @@ export const useAddressStore = defineStore({
                     this.getAll();
                 })
         },
-     async createAddress(address: Address) {
+        async createAddress(address: Address) {
             await addressService.createAddress(address)
                 .then(response => {
                     console.log(response);
                     this.getAll();
                 })
-     }
+        },
+        filter(searchTerm:string) {
+            this.$state.addresses = this.$state.addresses.filter((address: Address) =>
+                address.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+        }
     }
 
 });

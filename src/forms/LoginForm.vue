@@ -5,7 +5,6 @@
       <InputText v-model="email"
                  id="email"
                  aria-describedby="email-help"
-                 class="p-invalid w-full"
                  type="text"/>
     </div>
     <div class="field">
@@ -13,7 +12,6 @@
       <InputText v-model="password"
                  id="password"
                  aria-describedby="password-help"
-                 class="p-invalid w-full"
                  type="text"/>
     </div>
     <div class="field">
